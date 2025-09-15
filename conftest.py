@@ -19,8 +19,10 @@ def driver():
     options.add_argument('--window-size=1920,1080')
     
     try:
-        # Sử dụng ChromeDriver đã cài đặt
-        service = Service("/usr/local/bin/chromedriver")
+        # Sử dụng ChromeDriver trong dự án
+        import os
+        chromedriver_path = os.path.join(os.path.dirname(__file__), "drivers", "chromedriver")
+        service = Service(chromedriver_path)
         driver = webdriver.Chrome(service=service, options=options)
         print("✅ Chrome driver khởi tạo thành công!")
     except Exception as e:

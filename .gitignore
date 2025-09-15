@@ -70,6 +70,8 @@ Thumbs.db
 *.log
 geckodriver.log
 chromedriver.log
+drivers/chromedriver
+
 
 # Allure reports
 allure-results/
