@@ -12,17 +12,16 @@ def driver():
     """Tạo browser driver cho mỗi test"""
     # Tạo Chrome options
     options = webdriver.ChromeOptions()
-    # options.add_argument('--headless')  # Bỏ comment để chạy ẩn browser
+    # options.add_argument('--headless')  # Chạy ẩn browser để nhanh hơn
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--disable-gpu')
     options.add_argument('--window-size=1920,1080')
     
     try:
-        # Sử dụng ChromeDriverManager
-        service = Service(ChromeDriverManager().install())
+        # Sử dụng ChromeDriver đã cài đặt
+        service = Service("/usr/local/bin/chromedriver")
         driver = webdriver.Chrome(service=service, options=options)
-        driver.maximize_window()
         print("✅ Chrome driver khởi tạo thành công!")
     except Exception as e:
         print(f"❌ Lỗi khởi tạo Chrome driver: {e}")
