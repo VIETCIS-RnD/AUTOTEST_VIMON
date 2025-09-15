@@ -2,7 +2,7 @@
 Test cho trang chủ
 """
 import allure
-import pytest
+import pytest  # noqa: F401
 
 
 class TestHomepage:
