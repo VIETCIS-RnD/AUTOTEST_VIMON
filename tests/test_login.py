@@ -1,15 +1,11 @@
 """
 Test cases cho chức năng login
 """
-import allure
 
 
-@allure.feature("Login Tests")
 class TestLogin:
     """Class chứa các test case cho login"""
     
-    @allure.story("Test login thành công")
-    @allure.title("Login với thông tin đúng")
     def test_login_success(self, driver, test_data):
         """Test login với username và password đúng"""
         # Mở trang login
@@ -31,8 +27,6 @@ class TestLogin:
         assert "secure" in driver.current_url, "Login should be successful"
         print("✅ Login thành công!")
     
-    @allure.story("Test login thất bại")
-    @allure.title("Login với thông tin sai")
     def test_login_fail(self, driver, test_data):
         """Test login với username và password sai"""
         # Mở trang login
@@ -55,8 +49,6 @@ class TestLogin:
         assert error_message.is_displayed(), "Should show error message"
         print("✅ Hiển thị thông báo lỗi!")
     
-    @allure.story("Test login với username trống")
-    @allure.title("Login với username trống")
     def test_login_empty_username(self, driver, test_data):
         """Test login với username trống"""
         # Mở trang login

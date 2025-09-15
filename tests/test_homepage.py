@@ -1,15 +1,11 @@
 """
 Test cho trang chủ
 """
-import allure
-import pytest  # noqa: F401
 
 
 class TestHomepage:
     """Class chứa các test case cho trang chủ"""
     
-    @allure.story("Test trang chủ")
-    @allure.title("Kiểm tra tiêu đề trang chủ")
     def test_homepage_title(self, driver):
         """Test kiểm tra tiêu đề trang chủ"""
         # Mở trang chủ
@@ -21,8 +17,6 @@ class TestHomepage:
         
         print(f"✅ Tiêu đề trang chủ: {title}")
     
-    @allure.story("Test trang chủ")
-    @allure.title("Kiểm tra link Login")
     def test_login_link(self, driver):
         """Test kiểm tra link Login có tồn tại"""
         # Mở trang chủ
