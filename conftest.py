@@ -4,13 +4,13 @@ File cấu hình pytest - chạy trước mỗi test
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager  # noqa: F401
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 @pytest.fixture
 def driver():
     """Tạo browser driver cho mỗi test"""
-    # Tạo Chrome driver với hiển thị browser
+    # Tạo Chrome options
     options = webdriver.ChromeOptions()
     # options.add_argument('--headless')  # Bỏ comment để chạy ẩn browser
     options.add_argument('--no-sandbox')
@@ -19,9 +19,10 @@ def driver():
     options.add_argument('--window-size=1920,1080')
     
     try:
-        # Sử dụng ChromeDriver đã cài đặt
-        service = Service("/usr/local/bin/chromedriver")
+        # Sử dụng ChromeDriverManager
+        service = Service(ChromeDriverManager().install())
         driver = webdriver.Chrome(service=service, options=options)
+        driver.maximize_window()
         print("✅ Chrome driver khởi tạo thành công!")
     except Exception as e:
         print(f"❌ Lỗi khởi tạo Chrome driver: {e}")
@@ -44,3 +45,5 @@ def test_data():
         "invalid_username": "wrong_user",
         "invalid_password": "wrong_pass"
     }
+
+
