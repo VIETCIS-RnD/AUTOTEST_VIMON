@@ -28,6 +28,9 @@ def driver():
     except Exception as e:
         print(f"❌ Lỗi khởi tạo Chrome driver: {e}")
         raise
+
+    # 👉 Set implicit wait mặc định 10 giây cho toàn bộ test
+    driver.implicitly_wait(10)
     
     # Chạy test
     yield driver
@@ -35,16 +38,3 @@ def driver():
     # Đóng browser sau khi test xong
     driver.quit()
     print("✅ Đã đóng browser!")
-
-
-@pytest.fixture
-def test_data():
-    """Dữ liệu test"""
-    return {
-        "valid_username": "tomsmith",
-        "valid_password": "SuperSecretPassword!",
-        "invalid_username": "wrong_user",
-        "invalid_password": "wrong_pass"
-    }
-
-
